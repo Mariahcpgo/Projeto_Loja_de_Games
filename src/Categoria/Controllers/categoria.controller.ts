@@ -4,7 +4,7 @@ import { Categoria } from "../Entities/categoria.entity";
 import { CategoriaService } from "../Services/categoria.service";
 
 
-@Controller("/catgorias")
+@Controller("/categorias")
 export class CategoriaController{
 
     constructor(private readonly categoriaService: CategoriaService) {}

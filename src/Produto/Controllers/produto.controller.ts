@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from "@nestjs/common";
 import { get } from "http";
 import { Produto } from "../Entities/produto.entity";
 import { ProdutoService } from "../Services/produto.service";
@@ -42,5 +42,11 @@ export class ProdutoController{
     @HttpCode(HttpStatus.NO_CONTENT)
     delete(@Param('id', ParseIntPipe) id: number){
         return this.produtoService.delete(id);
+    }
+
+    @Get('/maior-que/:preco')
+    @HttpCode(HttpStatus.OK)
+    findByMaiorQue(@Param('preco') preco: number): Promise<Produto[]> {
+        return this.produtoService.findByMaiorQue(preco);
     }
 }
